@@ -49,14 +49,12 @@ jobs:
         run: |
           # 首先进行预检查
           cargo smart-release \
-            plugin-interface plugin-macros plugin-host example-plugin file-handler \
             --dry-run-cargo-publish \
             --verbose \
             --update-crates-index
 
           # 如果检查通过，执行发布
           cargo smart-release \
-            plugin-interface plugin-macros plugin-host example-plugin file-handler \
             --execute \
             --allow-dirty \
             --update-crates-index \
