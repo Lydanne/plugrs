@@ -1,5 +1,5 @@
-use std::path::PathBuf;
 use crate::plugin_loader::PluginLoader;
+use std::path::PathBuf;
 
 mod plugin_loader;
 
@@ -15,10 +15,10 @@ fn get_plugin_path() -> PathBuf {
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let loader = PluginLoader::new(get_plugin_path())?;
     let plugin = loader.load_plugin()?;
-    
+
     println!("加载插件: {}", plugin.name());
     let result = plugin.execute();
     println!("插件执行结果: {}", result);
-    
+
     Ok(())
-} 
+}

@@ -49,3 +49,9 @@ impl Plugin for FileAnalyzer {
         stats.len() as i32
     }
 }
+
+impl Default for FileAnalyzer {
+    fn default() -> Self {
+        Self::new()
+    }
+}

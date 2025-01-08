@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+# 颜色输出
+GREEN='\033[0;32m'
+NC='\033[0m'
+
+info() {
+    echo -e "${GREEN}[INFO]${NC} $1"
+}
+
+# 保存当前的 git 状态
+if ! git diff --quiet; then
+    git stash push -m "临时保存未提交的更改"
+    CHANGES_STASHED=1
+fi
+
+# 运行格式化
+info "运行代码格式化..."
+cargo fmt
+
+# 如果有格式化更改，创建一个新的提交
+if ! git diff --quiet; then
+    info "检测到格式更改，创建格式化提交..."
+    git add .
+    git commit --no-verify -m "style: 自动格式化代码"
+fi
+
+# 恢复之前保存的更改
+if [ "$CHANGES_STASHED" = "1" ]; then
+    git stash pop
+fi 

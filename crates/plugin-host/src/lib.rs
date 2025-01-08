@@ -51,3 +51,9 @@ impl PluginManager {
         self.plugins.len()
     }
 }
+
+impl Default for PluginManager {
+    fn default() -> Self {
+        Self::new()
+    }
+}

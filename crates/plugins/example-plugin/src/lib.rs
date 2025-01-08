@@ -20,3 +20,9 @@ impl Plugin for ExamplePlugin {
         42
     }
 }
+
+impl Default for ExamplePlugin {
+    fn default() -> Self {
+        Self::new()
+    }
+}
