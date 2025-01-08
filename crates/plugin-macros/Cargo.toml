@@ -2,6 +2,13 @@
 name = "plugin-macros"
 version = "0.1.0"
 edition = "2021"
+description = "Procedural macros for the plugrs plugin system"
+license = "MIT"
+repository = "https://github.com/Lydanne/plugrs"
+documentation = "https://docs.rs/plugin-macros"
+readme = "README.md"
+keywords = ["plugin", "macros", "proc-macro"]
+categories = ["development-tools::procedural-macro-helpers"]
 
 [lib]
 proc-macro = true

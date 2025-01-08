@@ -2,5 +2,12 @@
 name = "plugin-interface"
 version = "0.1.0"
 edition = "2021"
+description = "Plugin interface definitions for the plugrs system"
+license = "MIT"
+repository = "https://github.com/Lydanne/plugrs"
+documentation = "https://docs.rs/plugin-interface"
+readme = "README.md"
+keywords = ["plugin", "interface", "dynamic-loading"]
+categories = ["api-bindings", "development-tools"]
 
 [dependencies]

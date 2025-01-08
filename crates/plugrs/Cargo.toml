@@ -2,6 +2,13 @@
 name = "plugrs"
 version = "0.1.0"
 edition = "2021"
+description = "A lightweight and type-safe plugin system for Rust"
+license = "MIT"
+repository = "https://github.com/Lydanne/plugrs"
+documentation = "https://docs.rs/plugrs"
+readme = "README.md"
+keywords = ["plugin", "dynamic-loading", "plugin-system"]
+categories = ["api-bindings", "development-tools"]
 
 [lib]
 name = "plugrs"

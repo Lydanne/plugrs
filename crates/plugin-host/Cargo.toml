@@ -2,6 +2,13 @@
 name = "plugin-host"
 version = "0.1.0"
 edition = "2021"
+description = "Plugin host implementation for the plugrs system"
+license = "MIT"
+repository = "https://github.com/Lydanne/plugrs"
+documentation = "https://docs.rs/plugin-host"
+readme = "README.md"
+keywords = ["plugin", "host", "dynamic-loading"]
+categories = ["api-bindings", "development-tools"]
 
 [lib]
 name = "plugin_host"
