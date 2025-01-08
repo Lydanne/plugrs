@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 项目讨论
+    url: https://github.com/your-username/plugrs/discussions
+    about: 请在这里提出一般性问题和讨论
+  - name: 文档
+    url: https://github.com/your-username/plugrs/blob/main/README.md
+    about: 请先查看项目文档
