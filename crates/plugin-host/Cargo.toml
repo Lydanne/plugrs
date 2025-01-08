@@ -8,5 +8,5 @@ name = "plugin_host"
 path = "src/lib.rs"
 
 [dependencies]
-plugin-interface = { version = "0.1.0", path = "../plugin-interface" }
+plugin-interface = { version = "^0.1.0", path = "../plugin-interface" }
 libloading = "0.7"
