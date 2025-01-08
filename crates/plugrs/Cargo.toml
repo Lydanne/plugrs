@@ -17,4 +17,4 @@ path = "src/lib.rs"
 [dependencies]
 plugin-host = { version = "0.1.0", path = "../plugin-host" }
 plugin-interface = { version = "^0.1.0", path = "../plugin-interface" }
-plugin-macros = { version = "0.1.0", path = "../plugin-macros" }
+plugin-macros = { version = "^0.1.0", path = "../plugin-macros" }
