@@ -1,80 +1,129 @@
-# Rust Plugin System
+# Plugrs
 
-基于 Rust 实现的动态插件系统，支持运行时加载插件。
+一个轻量级、类型安全的 Rust 插件系统。
 
 ## 项目结构
 
 ```
-rust-plugin-system/
-├── Cargo.toml                          # 工作空间配置
-├── examples/                           # 示例程序
-│   └── hello/                         # hello 示例
+plugrs/
+├── Cargo.toml                 # 工作空间配置
+├── crates/                    # 核心代码
+│   ├── plugin-interface/     # 插件接口定义
+│   │   ├── Cargo.toml
+│   │   └── src/
+│   │       └── lib.rs
+│   ├── plugin-macros/       # 插件过程宏
+│   │   ├── Cargo.toml
+│   │   └── src/
+│   │       └── lib.rs
+│   ├── plugin-host/         # 插件加载器
+│   │   ├── Cargo.toml
+│   │   └── src/
+│   │       ├── lib.rs
+│   │       ├── main.rs
+│   │       └── plugin_loader.rs
+│   └── plugrs/              # 主库
 │       ├── Cargo.toml
 │       └── src/
-│           └── main.rs
-└── crates/                            # 核心代码
-    ├── plugin-interface/              # 插件接口定义
-    │   ├── Cargo.toml
-    │   └── src/
-    │       └── lib.rs
-    ├── plugin-macros/                 # 插件过程宏
-    │   ├── Cargo.toml
-    │   └── src/
-    │       └── lib.rs
-    ├── plugin-host/                   # 插件加载器
-    │   ├── Cargo.toml
-    │   └── src/
-    │       ├── lib.rs
-    │       └── plugin_loader.rs
-    └── plugins/                       # 插件集合
-        ├── example-plugin/            # 示例插件
-        │   ├── Cargo.toml
-        │   └── src/
-        │       └── lib.rs
-        └── file-handler/             # 文件分析插件
-            ├── Cargo.toml
-            └── src/
-                └── lib.rs
+│           └── lib.rs
+├── plugins/                  # 示例插件
+│   ├── example-plugin/      # 基础示例插件
+│   │   ├── Cargo.toml
+│   │   └── src/
+│   │       └── lib.rs
+│   └── file-handler/        # 文件处理插件
+│       ├── Cargo.toml
+│       └── src/
+│           └── lib.rs
+└── examples/                # 示例程序
+    └── hello/              # 基础示例
+        ├── Cargo.toml
+        └── src/
+            └── main.rs
 ```
 
-## 功能特性
+## 特性
 
-- 基于 Rust ABI 的插件系统
-- 运行时动态加载插件
-- 类型安全的插件接口
-- 跨平台支持 (Windows, macOS, Linux)
-- 过程宏简化插件开发
-- 完整的错误处理
+- 🚀 简单易用的 API
+- 🔒 类型安全的插件接口
+- 🔌 运行时动态加载
+- 🛠 过程宏简化插件开发
+- 📦 跨平台支持
+- ⚡ 零成本抽象
 
 ## 快速开始
 
-### 构建项目
+### 安装
 
-```bash
-# 克隆项目
-git clone <repository-url>
-cd rust-plugin-system
-
-# 构建所有包（包括插件）
-cargo build
-
-# 运行示例程序
-cargo run -p hello
+```toml
+[dependencies]
+plugrs = "0.1.0"
 ```
 
-## 创建新插件
+### 使用示例
 
-1. 在 `crates/plugins` 目录下创建新的插件目录：
+1. **创建插件**
 
-```bash
-mkdir -p crates/plugins/your-plugin/src
+```rust
+use plugrs::prelude::*;
+
+#[export_plugin]
+pub struct MyPlugin;
+
+impl Plugin for MyPlugin {
+    fn name(&self) -> String {
+        "My Plugin".to_string()
+    }
+
+    fn execute(&self) -> i32 {
+        println!("Hello from plugin!");
+        42
+    }
+}
 ```
 
-2. 创建插件的 `Cargo.toml`：
+2. **加载和使用插件**
+
+```rust
+use plugrs::{get_plugin_path, PluginManager};
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    // 创建插件管理器
+    let mut manager = PluginManager::new();
+
+    // 加载插件
+    manager.load_plugin(get_plugin_path("my_plugin"))?;
+    println!("加载了 {} 个插件", manager.plugin_count());
+
+    // 执行所有插件
+    let results = manager.execute_all();
+
+    // 显示执行结果
+    println!("\n插件执行结果:");
+    println!("----------------------------------------");
+    for (i, result) in results.iter().enumerate() {
+        println!("插件 {}: 返回值 = {}", i + 1, result);
+    }
+    println!("----------------------------------------");
+
+    Ok(())
+}
+```
+
+## 插件开发指南
+
+### 1. 创建新插件
+
+```bash
+cargo new --lib my-plugin
+cd my-plugin
+```
+
+### 2. 配置 Cargo.toml
 
 ```toml
 [package]
-name = "your-plugin"
+name = "my-plugin"
 version = "0.1.0"
 edition = "2021"
 
@@ -82,105 +131,61 @@ edition = "2021"
 crate-type = ["cdylib"]
 
 [dependencies]
-plugin-interface = { path = "../../plugin-interface" }
-plugin-macros = { path = "../../plugin-macros" }
+plugrs = "0.1.0"
 ```
 
-3. 实现插件 (`src/lib.rs`)：
+### 3. 实现插件
 
 ```rust
-use plugin_interface::Plugin;
-use plugin_macros::export_plugin;
+use plugrs::prelude::*;
 
 #[export_plugin]
-pub struct YourPlugin;
+pub struct MyPlugin;
 
-impl YourPlugin {
-    pub fn new() -> Self {
+impl Default for MyPlugin {
+    fn default() -> Self {
         Self
     }
 }
 
-impl Plugin for YourPlugin {
+impl Plugin for MyPlugin {
     fn name(&self) -> String {
-        "Your Plugin".to_string()
+        "My Plugin".to_string()
     }
 
     fn execute(&self) -> i32 {
-        println!("执行你的插件");
+        // 实现你的插件逻辑
         42
     }
 }
 ```
 
-4. 在工作空间的 `Cargo.toml` 中添加插件：
+### 4. 构建和测试
 
-```toml
-[workspace]
-members = [
-    "crates/plugin-interface",
-    "crates/plugin-macros",
-    "crates/plugin-host",
-    "crates/plugins/example-plugin",
-    "crates/plugins/file-handler",
-    "crates/plugins/your-plugin",  # 添加新插件
-    "examples/hello"
-]
+```bash
+# 构建插件
+cargo build --release
+
+# 运行示例程序
+cargo run --example hello
 ```
 
-## 插件系统架构
+## API 文档
 
-### 核心组件
+详细的 API 文档请访问 [docs.rs/plugrs](https://docs.rs/plugrs)。
 
-1. **插件接口** (`plugin-interface`)
+## 示例
 
-   - 定义 `Plugin` trait
-   - 提供插件类型定义
+查看 [examples](./examples) 目录获取更多示例：
 
-2. **插件宏** (`plugin-macros`)
-
-   - 提供 `#[export_plugin]` 属性宏
-   - 自动生成插件导出代码
-
-3. **插件加载器** (`plugin-host`)
-   - 提供动态库加载功能
-   - 管理插件生命周期
-
-### 示例插件
-
-1. **简单示例** (`example-plugin`)
-
-   - 演示基本插件实现
-   - 展示插件注册过程
-
-2. **文件分析器** (`file-handler`)
-   - 展示实际应用场景
-   - 包含状态管理和错误处理
-
-## 开发说明
-
-### 插件接口
-
-插件需要实现 `Plugin` trait：
-
-```rust
-pub trait Plugin: Send + Sync {
-    fn name(&self) -> String;
-    fn execute(&self) -> i32;
-}
-```
-
-### 注意事项
-
-- 插件必须使用 `cdylib` crate 类型
-- 使用 `#[export_plugin]` 属性宏导出插件
-- 插件实现需要是线程安全的 (Send + Sync)
-- 动态库会被编译到 `target/debug` 或 `target/release` 目录
+- `hello`: 基础示例，展示如何加载和执行插件
+- `example-plugin`: 简单的示例插件实现
+- `file-handler`: 更复杂的文件处理插件示例
 
 ## 贡献指南
 
-欢迎提交 Issue 和 Pull Request！
+欢迎贡献！请查看 [CONTRIBUTING.md](./CONTRIBUTING.md) 了解如何参与项目开发。
 
 ## 许可证
 
-MIT License
+本项目采用 MIT 许可证 - 详见 [LICENSE](./LICENSE) 文件。
