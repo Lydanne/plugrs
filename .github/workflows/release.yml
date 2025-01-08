@@ -47,8 +47,8 @@ jobs:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # 首先进行预检查，显示详细信息
-          cargo smart-release --dry-run --verbose
+          # 首先进行预检查
+          cargo smart-release --dry-run-cargo-publish --verbose
 
           # 如果检查通过，执行发布
           # --execute: 实际执行发布
@@ -61,4 +61,5 @@ jobs:
             --allow-dirty \
             --update-crates-index \
             --no-changelog-preview \
-            --capitalize-commit
+            --capitalize-commit \
+            --verbose
