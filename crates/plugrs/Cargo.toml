@@ -15,6 +15,6 @@ name = "plugrs"
 path = "src/lib.rs"
 
 [dependencies]
-plugrs-host = { version = "0.1.0", path = "../plugrs-host" }
+plugrs-host = { version = "^0.1.0", path = "../plugrs-host" }
 plugrs-interface = { version = "^0.1.0", path = "../plugrs-interface" }
 plugrs-macros = { version = "^0.1.0", path = "../plugrs-macros" }
