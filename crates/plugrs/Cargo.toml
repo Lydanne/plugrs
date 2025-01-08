@@ -1,0 +1,13 @@
+[package]
+name = "plugrs"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "plugrs"
+path = "src/lib.rs"
+
+[dependencies]
+plugin-host = { path = "../plugin-host" }
+plugin-interface = { path = "../plugin-interface" }
+plugin-macros = { path = "../plugin-macros" }

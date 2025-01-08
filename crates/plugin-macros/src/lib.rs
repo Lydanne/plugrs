@@ -11,7 +11,7 @@ pub fn export_plugin(_attr: TokenStream, item: TokenStream) -> TokenStream {
         #input
 
         #[no_mangle]
-        pub fn create_plugin() -> Box<dyn plugin_interface::Plugin> {
+        pub fn create_plugin() -> Box<dyn plugrs::interface::Plugin> {
             Box::new(#struct_name::new())
         }
     };

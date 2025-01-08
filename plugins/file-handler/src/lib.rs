@@ -1,5 +1,5 @@
-use plugin_interface::Plugin;
-use plugin_macros::export_plugin;
+use plugrs::interface::Plugin;
+use plugrs::macros::export_plugin;
 use std::{
     collections::HashMap,
     sync::{Arc, Mutex},

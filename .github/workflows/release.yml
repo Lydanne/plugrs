@@ -48,15 +48,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # 首先进行预检查
-          cargo smart-release --dry-run-cargo-publish --verbose
+          cargo smart-release \
+            plugin-interface plugin-macros plugin-host example-plugin file-handler \
+            --dry-run-cargo-publish \
+            --verbose \
+            --update-crates-index
 
           # 如果检查通过，执行发布
-          # --execute: 实际执行发布
-          # --allow-dirty: 允许在工作目录有更改的情况下发布（因为生成了 changelog）
-          # --update-crates-index: 更新 crates.io 索引以确保版本正确
-          # --no-changelog-preview: CI 环境下不需要预览
-          # --capitalize-commit: 规范化提交信息
           cargo smart-release \
+            plugin-interface plugin-macros plugin-host example-plugin file-handler \
             --execute \
             --allow-dirty \
             --update-crates-index \

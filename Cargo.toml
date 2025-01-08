@@ -1,4 +1,4 @@
 [workspace]
-members = ["crates/plugin-interface", "crates/plugin-macros", "crates/plugin-host", "crates/plugins/example-plugin", "crates/plugins/file-handler", "examples/hello"]
+members = ["crates/*", "plugins/*", "examples/*"]
 
 resolver = "2"

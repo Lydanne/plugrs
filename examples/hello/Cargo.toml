@@ -2,7 +2,7 @@
 name = "hello"
 version = "0.1.0"
 edition = "2021"
+publish = false
 
 [dependencies]
-plugin-host = { path = "../../crates/plugin-host" }
-plugin-interface = { path = "../../crates/plugin-interface" }
+plugrs = { path = "../../crates/plugrs" }

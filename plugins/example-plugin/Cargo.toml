@@ -7,5 +7,4 @@ edition = "2021"
 crate-type = ["cdylib"]
 
 [dependencies]
-plugin-interface = { path = "../../plugin-interface" }
-plugin-macros = { path = "../../plugin-macros" }
+plugrs = { path = "../../crates/plugrs" }

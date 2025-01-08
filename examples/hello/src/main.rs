@@ -1,4 +1,4 @@
-use plugin_host::{get_plugin_path, PluginManager};
+use plugrs::{get_plugin_path, PluginManager};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     // 创建插件管理器
