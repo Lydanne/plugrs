@@ -1,0 +1,12 @@
+[package]
+name = "plugin-host"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "plugin_host"
+path = "src/lib.rs"
+
+[dependencies]
+plugin-interface = { path = "../plugin-interface" }
+libloading = "0.7"
