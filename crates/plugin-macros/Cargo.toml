@@ -7,7 +7,7 @@ edition = "2021"
 proc-macro = true
 
 [dependencies]
+plugin-interface = { version = "0.1.0", path = "../plugin-interface" }
 syn = { version = "2.0", features = ["full"] }
 quote = "1.0"
 proc-macro2 = "1.0"
-plugin-interface = { path = "../plugin-interface" }
