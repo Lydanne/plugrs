@@ -89,8 +89,8 @@ cargo test test_name
 1. **创建新插件**
 
 ```rust
-use plugin_interface::Plugin;
-use plugin_macros::export_plugin;
+use plugrs_interface::Plugin;
+use plugrs_macros::export_plugin;
 
 #[export_plugin]
 pub struct MyPlugin;

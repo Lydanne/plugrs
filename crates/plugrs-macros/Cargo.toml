@@ -1,11 +1,11 @@
 [package]
-name = "plugin-macros"
+name = "plugrs-macros"
 version = "0.1.0"
 edition = "2021"
 description = "Procedural macros for the plugrs plugin system"
 license = "MIT"
 repository = "https://github.com/Lydanne/plugrs"
-documentation = "https://docs.rs/plugin-macros"
+documentation = "https://docs.rs/plugrs-macros"
 readme = "README.md"
 keywords = ["plugin", "macros", "proc-macro"]
 categories = ["development-tools::procedural-macro-helpers"]
@@ -14,7 +14,7 @@ categories = ["development-tools::procedural-macro-helpers"]
 proc-macro = true
 
 [dependencies]
-plugin-interface = { version = "^0.1.0", path = "../plugin-interface" }
+plugrs-interface = { version = "^0.1.0", path = "../plugrs-interface" }
 syn = { version = "2.0", features = ["full"] }
 quote = "1.0"
 proc-macro2 = "1.0"

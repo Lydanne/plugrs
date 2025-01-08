@@ -16,7 +16,7 @@ pub fn get_plugin_path(name: &str) -> PathBuf {
 
 /// 插件管理器
 pub struct PluginManager {
-    plugins: Vec<Box<dyn plugin_interface::Plugin>>,
+    plugins: Vec<Box<dyn plugrs_interface::Plugin>>,
 }
 
 impl PluginManager {

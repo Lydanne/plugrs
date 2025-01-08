@@ -1,4 +1,4 @@
-# plugin-interface
+# plugrs-interface
 
 Plugin interface definitions for the plugrs system.
 
@@ -14,13 +14,13 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-plugin-interface = "0.1.0"
+plugrs-interface = "0.1.0"
 ```
 
 ## Example
 
 ```rust
-use plugin_interface::Plugin;
+use plugrs_interface::Plugin;
 
 pub struct MyPlugin;
 

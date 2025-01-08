@@ -1,5 +1,5 @@
 use libloading::{Library, Symbol};
-use plugin_interface::Plugin;
+use plugrs_interface::Plugin;
 use std::ffi::OsStr;
 
 pub struct PluginLoader {

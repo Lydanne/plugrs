@@ -8,15 +8,15 @@
 plugrs/
 ├── Cargo.toml                 # 工作空间配置
 ├── crates/                    # 核心代码
-│   ├── plugin-interface/     # 插件接口定义
+│   ├── plugrs-interface/     # 插件接口定义
 │   │   ├── Cargo.toml
 │   │   └── src/
 │   │       └── lib.rs
-│   ├── plugin-macros/       # 插件过程宏
+│   ├── plugrs-macros/       # 插件过程宏
 │   │   ├── Cargo.toml
 │   │   └── src/
 │   │       └── lib.rs
-│   ├── plugin-host/         # 插件加载器
+│   ├── plugrs-host/         # 插件加载器
 │   │   ├── Cargo.toml
 │   │   └── src/
 │   │       ├── lib.rs

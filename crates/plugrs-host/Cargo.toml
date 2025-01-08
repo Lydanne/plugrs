@@ -1,19 +1,19 @@
 [package]
-name = "plugin-host"
+name = "plugrs-host"
 version = "0.1.0"
 edition = "2021"
 description = "Plugin host implementation for the plugrs system"
 license = "MIT"
 repository = "https://github.com/Lydanne/plugrs"
-documentation = "https://docs.rs/plugin-host"
+documentation = "https://docs.rs/plugrs-host"
 readme = "README.md"
 keywords = ["plugin", "host", "dynamic-loading"]
 categories = ["api-bindings", "development-tools"]
 
 [lib]
-name = "plugin_host"
+name = "plugrs_host"
 path = "src/lib.rs"
 
 [dependencies]
-plugin-interface = { version = "^0.1.0", path = "../plugin-interface" }
+plugrs-interface = { version = "^0.1.0", path = "../plugrs-interface" }
 libloading = "0.7"

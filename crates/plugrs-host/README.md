@@ -1,4 +1,4 @@
-# plugin-host
+# plugrs-host
 
 Plugin host implementation for the plugrs system.
 
@@ -15,15 +15,15 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-plugin-host = "0.1.0"
-plugin-interface = "0.1.0"
+plugrs-host = "0.1.0"
+plugrs-interface = "0.1.0"
 ```
 
 ## Example
 
 ```rust
-use plugin_host::PluginManager;
-use plugin_interface::Plugin;
+use plugrs_host::PluginManager;
+use plugrs_interface::Plugin;
 
 fn main() {
     let manager = PluginManager::new();
