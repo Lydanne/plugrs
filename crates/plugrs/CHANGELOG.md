@@ -7,16 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## v0.1.1 (2025-01-15)
 
+<csr-id-34f084fe362da64c5c2baa22131053e14917bf84/>
+
 ### Chore
 
  - <csr-id-34f084fe362da64c5c2baa22131053e14917bf84/> remove
+
+### Chore
+
+ - <csr-id-42093fb28e05cd16f23e550e087e57eb61885fb5/> add changelog
 
 ### Commit Statistics
 
 <csr-read-only-do-not-edit/>
 
- - 2 commits contributed to the release.
- - 1 commit was understood as [conventional](https://www.conventionalcommits.org).
+ - 4 commits contributed to the release.
+ - 2 commits were understood as [conventional](https://www.conventionalcommits.org).
  - 0 issues like '(#ID)' were seen in commit messages
 
 ### Commit Details
@@ -26,11 +32,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 <details><summary>view details</summary>
 
  * **Uncategorized**
+    - Add changelog ([`42093fb`](https://github.com/Lydanne/plugrs/commit/42093fb28e05cd16f23e550e087e57eb61885fb5))
+    - Release plugrs v0.1.1 ([`d6e5e1d`](https://github.com/Lydanne/plugrs/commit/d6e5e1da7e0e637927d03c215a327b065f5af648))
     - Remove ([`34f084f`](https://github.com/Lydanne/plugrs/commit/34f084fe362da64c5c2baa22131053e14917bf84))
     - Release plugrs-interface v0.1.1, plugrs-host v0.1.1, plugrs-macros v0.1.1, plugrs v0.1.0 ([`22ff92d`](https://github.com/Lydanne/plugrs/commit/22ff92d796e8481e251f27423ded59bc5cb03d05))
 </details>
 
 ## v0.1.0 (2025-01-15)
+
+<csr-id-e4407977d2f93f0a923a70cd20f0ce58f2161480/>
+<csr-id-a57279b42ad9c181898cf6a8349b58ec7b431d1c/>
+<csr-id-b7d639fa3d4a8a8761458b2a7a83067b9a20b569/>
+<csr-id-7897d7f830d03cd2fadc5280a578c6297ac10cc9/>
 
 ### Chore
 
