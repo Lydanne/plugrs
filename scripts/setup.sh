@@ -149,24 +149,6 @@ setup_hooks() {
     git config core.hooksPath .hooks
 }
 
-# 设置 VSCode
-setup_vscode() {
-    info "检查 VSCode..."
-    if ! command -v code &> /dev/null; then
-        info "安装 VSCode..."
-        brew install --cask visual-studio-code
-    else
-        info "更新 VSCode..."
-        brew upgrade --cask visual-studio-code
-    fi
-
-    # 安装/更新推荐的扩展
-    info "安装/更新 VSCode 扩展..."
-    for ext in rust-lang.rust-analyzer serayuzgur.crates tamasfe.even-better-toml vadimcn.vscode-lldb; do
-        code --install-extension $ext --force
-    done
-}
-
 # 构建项目
 build_project() {
     info "清理旧的构建文件..."
@@ -198,13 +180,6 @@ main() {
     install_tools
     update_project
     setup_hooks
-
-    # 询问是否安装/更新 VSCode
-    read -p "是否安装/更新 VSCode 和推荐的扩展？(y/n) " -n 1 -r
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        setup_vscode
-    fi
 
     # 构建项目
     build_project
