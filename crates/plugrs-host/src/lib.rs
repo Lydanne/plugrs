@@ -4,7 +4,7 @@ pub use plugin_loader::PluginLoader;
 use std::path::PathBuf;
 
 /// 获取平台特定的动态库文件名
-pub fn get_plugin_path(name: &str) -> PathBuf {
+pub fn plugin_path(name: &str) -> PathBuf {
     let file_name = match std::env::consts::OS {
         "windows" => format!("{}.dll", name),
         "macos" => format!("lib{}.dylib", name),
@@ -28,7 +28,7 @@ impl PluginManager {
 
     /// 加载插件
     pub fn load_plugin(&mut self, path: PathBuf) -> Result<(), Box<dyn std::error::Error>> {
-        println!("尝试加载插件: {:?}", path);
+        // println!("尝试加载插件: {:?}", path);
         let loader = PluginLoader::new(path)?;
         let plugin = loader.load_plugin()?;
         self.plugins.push(plugin);
@@ -40,7 +40,7 @@ impl PluginManager {
         self.plugins
             .iter()
             .map(|plugin| {
-                println!("执行插件: {}", plugin.name());
+                // println!("执行插件: {}", plugin.name());
                 plugin.execute()
             })
             .collect()
