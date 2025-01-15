@@ -28,7 +28,7 @@ use plugrs_interface::Plugin;
 fn main() {
     let manager = PluginManager::new();
 
-    // Load a plugin from a dynamic library
+    // Load a plugin from a dynamic library or plugin_path(crate)
     let plugin = manager.load_plugin("path/to/plugin.so").unwrap();
 
     // Execute the plugin
