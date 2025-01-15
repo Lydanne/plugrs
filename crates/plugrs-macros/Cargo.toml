@@ -1,6 +1,6 @@
 [package]
 name = "plugrs-macros"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Procedural macros for the plugrs plugin system"
 license = "MIT"
@@ -14,7 +14,7 @@ categories = ["development-tools::procedural-macro-helpers"]
 proc-macro = true
 
 [dependencies]
-plugrs-interface = { version = "^0.1.0", path = "../plugrs-interface" }
+plugrs-interface = { version = "^0.1.1", path = "../plugrs-interface" }
 syn = { version = "2.0", features = ["full"] }
 quote = "1.0"
 proc-macro2 = "1.0"
